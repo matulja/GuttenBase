@@ -28,7 +28,7 @@ public class HeuristicColumnTypeResolver implements ColumnTypeResolver {
     final ColumnType result = checkDatabaseSpecificTypes(columnType, databaseType);
 
     if (result == null) {
-      if (columnType.endsWith("CHAR") || columnType.endsWith("TEXT") || columnType.startsWith("CHAR")) {
+      if (columnType.endsWith("CHAR") || columnType.endsWith("TEXT") || columnType.startsWith("CHAR")){
         return ColumnType.CLASS_STRING;
       } else if ("BIGINT".equals(columnType)) {
         return ColumnType.CLASS_LONG;
@@ -36,7 +36,7 @@ public class HeuristicColumnTypeResolver implements ColumnTypeResolver {
         return ColumnType.CLASS_BIGDECIMAL;
       } else if ("INT2".equals(columnType) || "SMALLINT".equals(columnType)) {
         return ColumnType.CLASS_SHORT;
-      } else if (columnType.startsWith("INT") || columnType.endsWith("INT") || columnType.equals("COUNTER")) {
+      } else if (columnType.startsWith("INT") || columnType.endsWith("INT") || columnType.equals("COUNTER"))  {
         return ColumnType.CLASS_INTEGER;
       } else if (columnType.endsWith("BLOB") || columnType.equals("IMAGE")) {
         return ColumnType.CLASS_BLOB;
@@ -44,9 +44,12 @@ public class HeuristicColumnTypeResolver implements ColumnTypeResolver {
         return ColumnType.CLASS_BOOLEAN;
       } else if (columnType.equals("BYTEA")|| columnType.startsWith("VARBINARY"))  {
         return ColumnType.CLASS_BLOB;
+      } else if (columnType.equals("DATE")) {
+        return ColumnType.CLASS_DATE;
       } else {
         return ColumnType.valueForClass(columnMetaData.getColumnClassName());
       }
+
     }
 
     return result;
