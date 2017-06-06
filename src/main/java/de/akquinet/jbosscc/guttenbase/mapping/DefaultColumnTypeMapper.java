@@ -46,13 +46,6 @@ public class DefaultColumnTypeMapper implements ColumnTypeMapper {
     createH2ToDerbyMapping();
     createDerbyToH2Mapping();
 
-
-
-
-
-    createDB2ToMssqlMapping();
-
-
   }
 
 
@@ -137,7 +130,7 @@ public class DefaultColumnTypeMapper implements ColumnTypeMapper {
     addMapping(DatabaseType.MYSQL, DatabaseType.POSTGRESQL, "TINYINT UNSIGNED", "SMALLSERIAL");
     addMapping(DatabaseType.MYSQL, DatabaseType.POSTGRESQL, "TINYTEXT", "TEXT");
     addMapping(DatabaseType.MYSQL, DatabaseType.POSTGRESQL, "VARBINARY", "BYTEA");
-
+    addMapping(DatabaseType.MYSQL, DatabaseType.POSTGRESQL, "BYTEA", "BYTEA");
   }
 
   private void createMysqltoDB2Mapping() {
@@ -145,9 +138,15 @@ public class DefaultColumnTypeMapper implements ColumnTypeMapper {
     //TODO - ergänzen
     https://www.ibm.com/developerworks/data/library/techarticle/dm-0606khatri/
 
-    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "LONGTEXT", "VARCHAR(4000)"); //CHAR(254)
-    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "LONGBLOB", "BLOB"); //CLOB (2G)
-    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "DECIMAL", "DECIMAL(16)"); //CLOB (2G)
+    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "LONGTEXT", "VARCHAR(4000)");
+    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "LONGBLOB", "BLOB");
+    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "DECIMAL", "DECIMAL(16)");
+    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "MEDIUMBLOB", "BLOB(16M)");
+    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "BIGINT", "BIGINT");
+   // addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "VARCHAR", "VARCHAR(600)");
+    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "VARCHAR", "VARCHAR(700)");
+    addMapping(DatabaseType.MYSQL, DatabaseType.DB2, "DATETIME", "TIMESTAMP");
+
 
   }
   private void createMysqlToOracleMapping() {
@@ -185,9 +184,14 @@ public class DefaultColumnTypeMapper implements ColumnTypeMapper {
 
     //TODO-ergänzen
     addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "LONGTEXT", "NVARCHAR(4000)");
-    addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "LONGBLOB", "VARBINARY");
+    addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "LONGBLOB", "VARBINARY(MAX)");
     addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "VARCHAR", "NVARCHAR(4000)");
     addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "DECIMAL", "DECIMAL(38)");
+    addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "TIMESTAMP", "DATETIME2");
+    addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "MEDIUMBLOB", "VARBINARY(MAX)");
+    addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "DOUBLE", "FLOAT");
+    addMapping(DatabaseType.MYSQL, DatabaseType.MSSQL, "BLOB", "VARBINARY(MAX)");
+
 
   }
 
@@ -382,8 +386,13 @@ public class DefaultColumnTypeMapper implements ColumnTypeMapper {
 
     //TODO-ergänzen
 
-    addMapping(DatabaseType.MSSQL, DatabaseType.MYSQL, "NVARCHAR", "VARCHAR(255)");
-    addMapping(DatabaseType.MSSQL, DatabaseType.MYSQL, "VARBINARY", "BLOB");
+   // addMapping(DatabaseType.MSSQL, DatabaseType.MYSQL, "NVARCHAR", "VARCHAR(255)");
+    addMapping(DatabaseType.MSSQL, DatabaseType.MYSQL, "NVARCHAR", "VARCHAR(1000)");
+    addMapping(DatabaseType.MSSQL, DatabaseType.MYSQL, "DATETIME2", "DATETIME");
+    addMapping(DatabaseType.MSSQL, DatabaseType.MYSQL, "VARBINARY", "MEDIUMBLOB");
+   // addMapping(DatabaseType.MSSQL, DatabaseType.MYSQL, "VARBINARY", "BLOB");
+    addMapping(DatabaseType.MSSQL, DatabaseType.MYSQL, "FLOAT", "DOUBLE");
+
 
   }
 
@@ -393,6 +402,8 @@ public class DefaultColumnTypeMapper implements ColumnTypeMapper {
 
     addMapping(DatabaseType.MSSQL, DatabaseType.POSTGRESQL, "NVARCHAR", "TEXT");
     addMapping(DatabaseType.MSSQL, DatabaseType.POSTGRESQL, "VARBINARY", "BYTEA");
+    addMapping(DatabaseType.MSSQL, DatabaseType.POSTGRESQL, "DATETIME2", "TIMESTAMP");
+    addMapping(DatabaseType.MSSQL, DatabaseType.POSTGRESQL, "FLOAT", "DOUBLE PRECISION");
 
   }
 
@@ -401,10 +412,14 @@ public class DefaultColumnTypeMapper implements ColumnTypeMapper {
     //TODO-ergänzen
 
     addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "VARBINARY", "BLOB");
-    addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "NVARCHAR", "VARCHAR(255)");
+    //  addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "NVARCHAR", "VARCHAR(255)");
+    addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "NVARCHAR", "VARCHAR(600)");
     addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "DECIMAL", "DECIMAL(16)");
     addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "INTEGER", "INT");
     addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "INTEGER", "INT");
+    addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "DATETIME2", "TIMESTAMP");
+
+    //addMapping(DatabaseType.MSSQL, DatabaseType.DB2, "FLOAT", "FLOAT");
 
   }
 
