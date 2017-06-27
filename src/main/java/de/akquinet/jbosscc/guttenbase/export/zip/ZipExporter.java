@@ -213,7 +213,7 @@ public class ZipExporter implements Exporter {
 
   private void writeDatabaseEntry(final DatabaseMetaData databaseMetaData) throws IOException, SQLException {
     newEntry(ZipConstants.PREFIX + ZipConstants.DBINFO_NAME);
-    new ZipDatabaseMetaDataWriter().writeDatabaseMetaDataEntry(databaseMetaData).store("Database meta data", _zipOutputStream);
+    new ZipDatabaseMetaDataWriter().writeDatabaseMetaDataEntry(databaseMetaData).store("InfluxDB meta data", _zipOutputStream);
     closeEntry();
 
     newEntry(ZipConstants.META_DATA);

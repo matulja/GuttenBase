@@ -17,11 +17,11 @@ import java.util.Iterator;
  */
 @SuppressWarnings("RedundantThrows")
 public class ZipDatabaseMetaDataWriter extends ZipAbstractMetaDataWriter {
-  public static final String DATABASE_NAME = "Database";
-  public static final String DATABASE_TYPE = "Database-Type";
+  public static final String DATABASE_NAME = "InfluxDB";
+  public static final String DATABASE_TYPE = "InfluxDB-Type";
   public static final String DATABASE_MAJOR_VERSION = "Major-Version";
   public static final String DATABASE_MINOR_VERSION = "Minor-Version";
-  public static final String DATABASE_SCHEMA = "Database-Schema";
+  public static final String DATABASE_SCHEMA = "InfluxDB-Schema";
   public static final String TABLE_NAME = "Table-Name";
 
   public ZipDatabaseMetaDataWriter writeDatabaseMetaDataEntry(final DatabaseMetaData databaseMetaData) throws IOException, SQLException {
